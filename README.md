@@ -73,7 +73,17 @@ GEMINI_TEXT_MODEL=...
 - Notifications: Firebase Cloud Messaging, SMS/WhatsApp provider
 - AI orchestration: provider adapter for OpenAI and Gemini
 
+## Render Deployment
+
+This repository now includes a small dependency-free Go web server so Render's Go build command works:
+
+```bash
+go build -tags netgo -ldflags "-s -w" -o app
+./app
+```
+
+The app reads the `PORT` environment variable required by Render, serves the LifeMate AI landing page at `/`, exposes `/health`, returns feature data at `/api/features`, and serves the hackathon documents from `/docs/{file}`.
+
 ## Winning Hackathon Angle
 
 LifeMate AI is not another chatbot. It is a trusted life operations layer for people who are often excluded by language, literacy, connectivity, and complexity. The strongest demo shows one user speaking naturally in a local language and LifeMate handling a complete life task: understanding a government document, setting medicine reminders, creating a budget, alerting family, and working offline.
-
